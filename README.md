@@ -1,3 +1,33 @@
+
+# PhotoView README
+
+forks from https://github.com/Baseflow/PhotoView
+
+添加了 CropGravity 参数，当 ScaleType 为 CenterCrop 时可以设置头部或底部，用于长图预览。
+
+## 使用
+Step 1. Add the JitPack repository to your build file
+
+Add it in your root build.gradle at the end of repositories:
+```
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Step 2. Add the dependency
+```
+dependencies {
+	    implementation 'com.github.1djmao:PhotoView:3.0'
+}
+```
+
+
+---
+
 # PhotoView
 PhotoView aims to help produce an easily usable implementation of a zooming Android ImageView.
 
