@@ -35,6 +35,7 @@ public class PhotoView extends AppCompatImageView {
     private PhotoViewAttacher attacher;
     private ScaleType pendingScaleType;
 
+
     public PhotoView(Context context) {
         this(context, null);
     }
@@ -252,5 +253,22 @@ public class PhotoView extends AppCompatImageView {
 
     public void setOnSingleFlingListener(OnSingleFlingListener onSingleFlingListener) {
         attacher.setOnSingleFlingListener(onSingleFlingListener);
+    }
+
+    public CropGravity getmCropGravity() {
+        return attacher.getCropGravity();
+    }
+
+    public void setCropGravity(CropGravity mCropGravity) {
+        attacher.setCropGravity(mCropGravity);
+    }
+
+    public static enum CropGravity {
+        START,
+        CENTER,
+        END;
+
+        private CropGravity() {
+        }
     }
 }

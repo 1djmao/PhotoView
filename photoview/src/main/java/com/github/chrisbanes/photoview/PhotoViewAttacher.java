@@ -21,6 +21,7 @@ import android.graphics.Matrix.ScaleToFit;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnLongClickListener;
@@ -94,6 +95,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     private boolean mZoomEnabled = true;
     private ScaleType mScaleType = ScaleType.FIT_CENTER;
+    private PhotoView.CropGravity cropGravity = PhotoView.CropGravity.CENTER;
 
     private OnGestureListener onGestureListener = new OnGestureListener() {
         @Override
@@ -617,8 +619,15 @@ public class PhotoViewAttacher implements View.OnTouchListener,
         } else if (mScaleType == ScaleType.CENTER_CROP) {
             float scale = Math.max(widthScale, heightScale);
             mBaseMatrix.postScale(scale, scale);
-            mBaseMatrix.postTranslate((viewWidth - drawableWidth * scale) / 2F,
-                (viewHeight - drawableHeight * scale) / 2F);
+            if (cropGravity== PhotoView.CropGravity.START){
+
+            }else if (cropGravity== PhotoView.CropGravity.CENTER){
+                mBaseMatrix.postTranslate((viewWidth - drawableWidth * scale) / 2F,
+                        (viewHeight - drawableHeight * scale) / 2F);
+            }else {
+                mBaseMatrix.postTranslate((viewWidth - drawableWidth * scale),
+                        (viewHeight - drawableHeight * scale));
+            }
 
         } else if (mScaleType == ScaleType.CENTER_INSIDE) {
             float scale = Math.min(1.0f, Math.min(widthScale, heightScale));
@@ -819,5 +828,13 @@ public class PhotoViewAttacher implements View.OnTouchListener,
                 Compat.postOnAnimation(mImageView, this);
             }
         }
+    }
+
+    public PhotoView.CropGravity getCropGravity() {
+        return cropGravity;
+    }
+
+    public void setCropGravity(PhotoView.CropGravity cropGravity) {
+        this.cropGravity = cropGravity;
     }
 }
