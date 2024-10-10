@@ -1,7 +1,7 @@
 
-# PhotoView README
+# PhotoView
 
-forks from https://github.com/Baseflow/PhotoView
+fork from https://github.com/Baseflow/PhotoView
 
 添加了 CropGravity 参数，当 ScaleType 为 CenterCrop 时可以设置头部或底部，用于长图预览。
 
